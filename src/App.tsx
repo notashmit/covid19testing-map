@@ -147,6 +147,11 @@ export class App extends React.Component<{}, AppState> {
         }
       })
     }, (e: any) => {
+      // If user denies the geopromt, look up IP
+      if (e["message"] === "User denied geolocation prompt") {
+        // todo: get IP here
+        console.log("getting IP")
+      }
       console.error('failed to get location', e);
       this.handleLocationPrompt('Respond', 'Deny');
     }, {enableHighAccuracy: true });
